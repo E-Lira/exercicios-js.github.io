@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Funções em JavaScript</title>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>📋 Funções em JavaScript</h2>
+
+<div class="container">
+
+    <!-- 1 -->
+    <div class="card">
+        <h3>Maior e Menor</h3>
+        <input type="number" id="mm1" placeholder="Valor 1">
+        <input type="number" id="mm2" placeholder="Valor 2">
+        <input type="number" id="mm3" placeholder="Valor 3">
+        <input type="number" id="mm4" placeholder="Valor 4">
+        <input type="number" id="mm5" placeholder="Valor 5">
+        <button onclick="executarMaiorMenor()">Calcular</button>
+        <p id="res1"></p>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+        <h3>Vogal</h3>
+        <input type="text" id="vogal" placeholder="Digite uma letra">
+        <button onclick="executarVogal()">Verificar</button>
+        <p id="res2"></p>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+        <h3>Números Pares</h3>
+        <input type="number" id="li" placeholder="Limite inferior">
+        <input type="number" id="ls" placeholder="Limite superior">
+        <button onclick="executarLimites()">Calcular</button>
+        <p id="res3"></p>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+        <h3>Ordem Crescente</h3>
+        <input type="number" id="o1" placeholder="Valor 1">
+        <input type="number" id="o2" placeholder="Valor 2">
+        <input type="number" id="o3" placeholder="Valor 3">
+        <button onclick="executarOrdem()">Ordenar</button>
+        <p id="res4"></p>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+        <h3>Positivo ou Negativo</h3>
+        <input type="number" id="pn" placeholder="Digite um número">
+        <button onclick="executarPN()">Verificar</button>
+        <p id="res5"></p>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+        <h3>Par ou Ímpar</h3>
+        <input type="number" id="pi" placeholder="Digite um número">
+        <button onclick="executarPI()">Verificar</button>
+        <p id="res6"></p>
+    </div>
+
+</div>
+
+<script>
+
+    function executarMaiorMenor() {
+        let valores = [
+            +mm1.value, +mm2.value, +mm3.value, +mm4.value, +mm5.value
+        ];
+
+        let maior = Math.max(...valores);
+        let menor = Math.min(...valores);
+
+        res1.innerText = `Maior: ${maior} | Menor: ${menor}`;
+    }
+
+    function executarVogal() {
+        let c = vogal.value.toLowerCase();
+        res2.innerText = "Resultado: " + ("aeiou".includes(c) ? 1 : 0);
+    }
+
+    function executarLimites() {
+        let liVal = +li.value;
+        let lsVal = +ls.value;
+
+        let soma = 0;
+        let pares = [];
+
+        for (let i = liVal + 1; i < lsVal; i++) {
+            if (i % 2 === 0) {
+                pares.push(i);
+                soma += i;
+            }
+        }
+
+        res3.innerText = `Pares: ${pares.join(", ")} | Soma: ${soma}`;
+    }
+
+    function executarOrdem() {
+        let arr = [+o1.value, +o2.value, +o3.value];
+        arr.sort((a, b) => a - b);
+        res4.innerText = arr.join(", ");
+    }
+
+    function executarPN() {
+        res5.innerText = (+pn.value >= 0) ? "Positivo" : "Negativo";
+    }
+
+    function executarPI() {
+        res6.innerText = (+pi.value % 2 === 0) ? "Par" : "Ímpar";
+    }
+
+</script>
+
+</body>
+</html>
